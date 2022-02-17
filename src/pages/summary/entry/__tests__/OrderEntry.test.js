@@ -18,7 +18,7 @@ test.only("handles error for scroops and toppings routes", async () => {
     })
   );
 
-  render(<OrderEntry></OrderEntry>);
+  render(<OrderEntry setOrderPhase={jest.fn()}></OrderEntry>);
 
   //to keep it wait untill completes all to wrap in waitFor
   await waitFor(async () => {
