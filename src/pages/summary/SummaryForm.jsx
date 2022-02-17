@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { Form, Button, Popover, OverlayTrigger } from "react-bootstrap";
 
-// const popover = (
-//     <Popover id="popover-basic">
-//       <Popover.Header as="h3">Popover right</Popover.Header>
-//       <Popover.Body>
-//         And here's some <strong>amazing</strong> content. It's very engaging.
-//         right?
-//       </Popover.Body>
-//     </Popover>
-//   );
-
-export default function SummaryForm() {
+export default function SummaryForm({ setOrderPhase }) {
   const [disabled, setDisabled] = useState(true);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    //the next page will handle submitting order
+    setOrderPhase("completed");
+  }
 
   const popover = (
     <Popover id="popover-basic">
@@ -30,7 +27,7 @@ export default function SummaryForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group controlId="terms-and-conditions">
         <Form.Check
           type="checkbox"
